@@ -1,4 +1,4 @@
-# PUI homework
+# PUI homework 1
 
 Deployed website: https://tcowell.github.io/tyree-pui-hw/solution-hw1/
 
