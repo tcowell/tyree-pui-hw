@@ -9,7 +9,7 @@
 }
 
 .logo {
-    width: 300px;
+    width: 400px;
     margin: 20px;
 }
 
@@ -25,7 +25,7 @@
 }
 
 .other-page {
-    margin: 30px 100px 30px 50px;
+    margin: 30px 50px 30px 50px;
 }
 
 .body-header {
@@ -33,6 +33,7 @@
     border-top: 5px solid;
     font-size: 30px;
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .main-body {
@@ -63,25 +64,34 @@
 
 .cart-item {
     margin-bottom: 30px;
+    display: flex;
+    align-items: center;
 }
 
 .cart-image {
-    width: 100px;
+    width: 130px;
     border: 2px solid;
 }
 
 .cart-description {
     margin-top: 10px;
+    width: 350px;
+    padding-left: 50px;
+    font-size: 24px;
+}
+
+.price {
+    margin-top: 10px;
+    width: 100px;
+    font-size: 24px;
+    text-align: right;
 }
 
 .total {
-    border-top: 2px solid;
-    width: 60%;
-    margin: 0px auto 0px auto;
-}
-
-.total-price {
-    margin-top: 10px;
+    border-top: 5px solid;
+    display: flex;
+    padding: 20px 20px 20px 130px;
+    font-size: 24px;
     margin-bottom: 20px;
 }
 
@@ -89,6 +99,8 @@
     border: 2px solid;
     padding: 5px 15px 5px 15px;
     background-color: yellow;
+    margin-left: 70%;
+    font-size: 24px;
 }
 
 .remove {
@@ -108,26 +120,26 @@ a:link, a:visited {
 
 .details {
     display: flex;
-    justify-content: center;
-    margin-top: 50px;
-    align-items: flex-end;
+    justify-content: space-evenly;
 }
 
 .details-right {
-    font-size: 28px;
-    flex-grow: 1;
-    margin-left: 30px;
+    font-size: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
     padding: 20px;
+    align-self: center;
+    width: 400px;
 }
 
 .detail-image {
-    width: 500px;
+    width: 400px;
     border: 2px solid;
-    margin: 0px 30px 0px 100px;
+    margin: 0px 30px 0px 60px;
+    flex-grow: 1;
 }
 
 .detail-description {
-    width: 500px;
     text-align: left;
     margin-top: 50px;
 }
@@ -141,11 +153,13 @@ a:link, a:visited {
 .dropdown {
     margin-top: 10px;
     font-size: 24px;
+    width: 200px;
 }
 
 .add-to-cart {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 30px;
     align-items: center;
     margin-top: 50px;
 }
