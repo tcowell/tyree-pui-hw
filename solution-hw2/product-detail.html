@@ -2,68 +2,77 @@
 <html lang="en">
   <meta charset="UTF-8">
   <title>Product Detail</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
 
   <body>
+    
     <div class="header">
-        <h2>Shopping Cart</h2>
-    </div>
+        <div class="logo">
+          <a href="index.html">
+          <img src="assets/logo-01.svg" alt="Bun Bun Company Logo"/>
+          </a>
+        </div>
   
-    <div class="logo">
-        <a href="index.html">
-        <img src="assets/logo-01.svg" alt="Bun Bun Company Logo"/>
-        </a>
-    </div>
-  
-    <div class="main-body">
-        <div class="main-menu">
+        
+        <div class="header-right">
+          <div class="main-menu">
             <div class="current-page">
               PRODUCTS
             </div>
+  
             <div class="other-page">
               <a href="./cart.html">CART</a>
             </div>
-        </div>
+          </div>
   
-        <div class= "body-header">
-          <h3>Original Cinnamon Roll</h3>
-        </div>
+          <div class= "body-header">
+            <p>Original Cinnamon Roll</p>
+          </div>
+  
+        </div>  
+    </div>
+  
+    <div class="details">
 
         <img class="detail-image" src="assets/products/original-cinnamon-roll.jpg" alt="A cinnamon roll glazed with icing on a plate with cinnamon sticks"/>
     
-        <div class="detail-description">
-            Customize our delicious, hand-made cinnamon roll to your liking!
-        </div>
-
-        <div class="customize">
-            Glazing:
-            <div class="dropdown">
-                <select>
-                    <option value="original">Keep original</option>
-                    <option value="sugar">Sugar milk</option>
-                    <option value="vanilla">Vanilla milk</option>
-                    <option value="chocolate">Double chocolate</option>
-                </select>
+        <div class="details-right">
+        
+            <div class="detail-description">
+                Customize our delicious, hand-made cinnamon roll to your liking!
             </div>
-        </div>
 
-        <div class="customize">
-            Pack size:
-            <div class="dropdown">
-                <select>
-                    <option value="1">1</option>
-                    <option value="3">3</option>
-                    <option value="6">6</option>
-                    <option value="12">12</option>
-                </select>
+            <div class="customize">
+                Glazing:
+                <div class="dropdown">
+                    <select>
+                        <option value="original">Keep original</option>
+                        <option value="sugar">Sugar milk</option>
+                        <option value="vanilla">Vanilla milk</option>
+                        <option value="chocolate">Double chocolate</option>
+                    </select>
+                </div>
             </div>
-        </div>
 
-        <div class="add-to-cart">
-            Total: $ 2.49
-            <span class="add-button">
-                Checkout
-            </span>
+            <div class="customize">
+                Pack size:
+                <div class="dropdown">
+                    <select>
+                        <option value="1">1</option>
+                        <option value="3">3</option>
+                        <option value="6">6</option>
+                        <option value="12">12</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="add-to-cart">
+                $ 2.49
+                <span class="add-button">
+                    Checkout
+                </span>
+            </div>
+
         </div>
     </div>
   </body>
