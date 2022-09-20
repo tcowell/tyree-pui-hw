@@ -31,6 +31,19 @@ document.addEventListener('DOMContentLoaded', function() {
     glazingOptions.innerHTML = options;
 });
 
+const packSelect = [1, 3, 5, 10]
+
+document.addEventListener('DOMContentLoaded', function() {
+    let packOptions = document.querySelector('#pack');
+
+    let options = '';
+    for (let item of packSelect) {
+        options += `<option value=${item}>${item}</option>`;
+    }
+
+    packOptions.innerHTML = options;
+});
+
 function glazingChange(element) {
     const priceChange = Number(element.value);
     console.log(priceChange);
