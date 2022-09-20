@@ -3,6 +3,7 @@
   <meta charset="UTF-8">
   <title>Product Detail</title>
   <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <script src="js/script.js"></script>
 
   <body>
     
@@ -45,12 +46,7 @@
             <div class="customize">
                 Glazing:
                 <div class="dropdown">
-                    <select>
-                        <option value="original">Keep original</option>
-                        <option value="sugar">Sugar milk</option>
-                        <option value="vanilla">Vanilla milk</option>
-                        <option value="chocolate">Double chocolate</option>
-                    </select>
+                    <select id="glazing" onchange="glazingChange(this)"></select>
                 </div>
             </div>
 
@@ -67,7 +63,7 @@
             </div>
 
             <div class="add-to-cart">
-                $ 2.49
+                <span id="price">$ 2.49</span>
                 <span class="add-button">
                     Checkout
                 </span>
