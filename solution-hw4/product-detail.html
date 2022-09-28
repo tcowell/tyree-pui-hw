@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <title>Product Detail</title>
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <script src="js/script.js"></script>
+
+  <body>
+    
+    <div class="header">
+        <div class="logo">
+          <a href="index.html">
+          <img src="assets/logo-01.svg" alt="Bun Bun Company Logo"/>
+          </a>
+        </div>
+  
+        
+        <div class="header-right">
+          <div class="main-menu">
+            <div class="current-page">
+              PRODUCTS
+            </div>
+  
+            <div class="other-page">
+              <a href="./cart.html">CART</a>
+            </div>
+          </div>
+  
+          <div class= "body-header">
+            <p>Original Cinnamon Roll</p>
+          </div>
+  
+        </div>  
+    </div>
+  
+    <div class="details">
+
+        <img class="detail-image" src="assets/products/original-cinnamon-roll.jpg" alt="A cinnamon roll glazed with icing on a plate with cinnamon sticks"/>
+    
+        <div class="details-right">
+        
+            <div class="detail-description">
+                Customize our delicious, hand-made cinnamon roll to your liking!
+            </div>
+
+            <div class="customize">
+                Glazing:
+                <div class="dropdown">
+                    <select id="glazing" onchange="glazingChange(this)"></select>
+                </div>
+            </div>
+
+            <div class="customize">
+                Pack size:
+                <div class="dropdown">
+                    <select id="pack" onchange="packChange(this)"></select>
+                </div>
+            </div>
+
+            <div class="add-to-cart">
+                <span id="price">$ 2.49</span>
+                <span class="add-button">
+                    Checkout
+                </span>
+            </div>
+
+        </div>
+    </div>
+  </body>
