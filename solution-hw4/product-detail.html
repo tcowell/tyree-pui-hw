@@ -4,9 +4,11 @@
   <title>Product Detail</title>
   <link rel="stylesheet" type="text/css" href="styles/style.css">
   <script src="js/script.js"></script>
+  <script src="js/rollsData.js"></script>
 
   <body>
-    
+  
+    <!-- Page Header -->
     <div class="header">
         <div class="logo">
           <a href="index.html">
@@ -32,17 +34,24 @@
   
         </div>  
     </div>
-  
+    <!-- END HEADER-->
+
+
+    <!-- PRODUCT DETAILS -->
     <div class="details">
 
         <img class="detail-image" src="assets/products/original-cinnamon-roll.jpg" alt="A cinnamon roll glazed with icing on a plate with cinnamon sticks"/>
-    
+
+
+        <!-- RIGHT SIDE OF PRODUCT DETIALS -->
         <div class="details-right">
         
+          <!-- TODO: update to use url info -->
             <div class="detail-description">
                 Customize our delicious, hand-made cinnamon roll to your liking!
             </div>
 
+          <!-- Glazing Drop Down -->
             <div class="customize">
                 Glazing:
                 <div class="dropdown">
@@ -50,6 +59,7 @@
                 </div>
             </div>
 
+            <!-- Pack Size Drop Down -->
             <div class="customize">
                 Pack size:
                 <div class="dropdown">
@@ -57,6 +67,7 @@
                 </div>
             </div>
 
+            <!-- Final Price and Checkout Button -->
             <div class="add-to-cart">
                 <span id="price">$ 2.49</span>
                 <span class="add-button">
@@ -65,5 +76,9 @@
             </div>
 
         </div>
+        <!-- END DETAILS RIGHT -->
+
     </div>
+    <!-- END PRODUCT DETAILS -->
+
   </body>
