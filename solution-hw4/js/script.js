@@ -1,7 +1,4 @@
-// HOMEWORK 4 CODE >> 
-
-// create empty array
-const cart = [];
+// HOMEWORK 4 CODE (part 1)>> 
 
 // parse the URL parameter and store the current roll type as a variable
 
@@ -13,7 +10,6 @@ const rollType = params.get("roll");
 const currentRoll = rolls[rollType];
 const imageFileName = currentRoll["imageFile"];
 const rollPrice = currentRoll["basePrice"];
-console.log(rollPrice);
 
 // update page header using roll data
 const headerElement = document.querySelector(".body-header");
@@ -92,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Create object for price caluclations
 const orderSummary = {
     basePrice: currentRoll["basePrice"],
+    glazingType: "Keep Original",
     glazingPrice: 0,
     packPrice: 1
 };
@@ -104,6 +101,9 @@ function glazingChange(element) {
 
     //update orderSummary glazingPrice to be the glazing price from the drop down
     orderSummary.glazingPrice = priceChange;
+
+    //update orderSummary glazingType to be the name of the glazing selected
+    orderSummary.glazingType = element.options[element.selectedIndex].text;
 
     //call the update price function using the updated orderSummary object
     updatePrice(orderSummary);
@@ -137,6 +137,36 @@ function updatePrice(order) {
     //update DOM to display new price
     price.innerHTML = '$ ' + finalPrice;
 
+};
+
+
+// HOMEWORK 4 CODE (PART 2) >>>
+
+// create empty array
+const cart = [];
+
+// define Roll class
+class Roll {
+    constructor(rollType, rollGlazing, packSize, basePrice) {
+        this.type = rollType;
+        this.glazing =  rollGlazing;
+        this.size = packSize;
+        this.basePrice = basePrice;
+    }
 }
 
+// onclick function for 'Checkout' button
+function addToCart() {
 
+    //gather info to create Roll object
+    const rollGlazing = orderSummary.glazingType;
+    const packSize = orderSummary.packPrice;
+    const basePrice = orderSummary.basePrice;
+
+    //create a new Roll object with the correct values
+    const roll = new Roll(rollType, rollGlazing, packSize, basePrice);
+
+    //add new roll to cart array
+    cart.push(roll);
+    console.log(cart);
+}
