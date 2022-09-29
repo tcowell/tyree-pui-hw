@@ -1,3 +1,37 @@
+// HOMEWORK 4 CODE >> 
+
+// create empty array
+const cart = [];
+
+// parse the URL parameter and store the current roll type as a variable
+
+const queryString = window.location.search;
+const params = new URLSearchParams(queryString);
+const rollType = params.get("roll");
+
+// get the data for the current roll type
+const currentRoll = rolls[rollType];
+const imageFileName = currentRoll["imageFile"];
+const rollPrice = currentRoll["basePrice"];
+console.log(rollPrice);
+
+// update page header using roll data
+const headerElement = document.querySelector(".body-header");
+headerElement.innerText = rollType + " Cinnamon Roll";
+
+// update image using roll data
+const rollImage = document.querySelector(".detail-image");
+rollImage.src = "./assets/products/" + imageFileName;
+
+// update price using roll data
+const price = document.querySelector('#price');
+price.innerHTML = "$ " + rollPrice;
+
+
+
+// HOMEWORK 3 CODE >>
+
+
 // Define objects for glazing options
 
 const keepOriginal = {
@@ -57,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Create object for price caluclations
 const orderSummary = {
-    basePrice: 2.49,
+    basePrice: currentRoll["basePrice"],
     glazingPrice: 0,
     packPrice: 1
 };
@@ -104,3 +138,5 @@ function updatePrice(order) {
     price.innerHTML = '$ ' + finalPrice;
 
 }
+
+
