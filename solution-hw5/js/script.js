@@ -174,3 +174,14 @@ function addToCart() {
 
 // HOMEWORK 5 CODE >>>>>
 
+let a = new Roll("Original", "Sugar Milk", 1, 2.49);
+cart.push(a);
+
+let b = new Roll("Walnut", "Vanilla Milk", 12, 3.49);
+cart.push(b);
+
+let c = new Roll("Raisin", "Sugar Milk", 3, 2.99);
+cart.push(c);
+
+let d = new Roll("Apple", "Original", 3, 3.49);
+cart.push(d);
