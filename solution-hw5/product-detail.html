@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <title>Product Detail</title>
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+
+  <body>
+  
+    <!-- Page Header -->
+    <div class="header">
+        <div class="logo">
+          <a href="index.html">
+          <img src="assets/logo-01.svg" alt="Bun Bun Company Logo"/>
+          </a>
+        </div>
+  
+        
+        <div class="header-right">
+          <div class="main-menu">
+            <div class="current-page">
+              PRODUCTS
+            </div>
+  
+            <div class="other-page">
+              <a href="./cart.html">CART</a>
+            </div>
+          </div>
+  
+          <div class= "body-header" id = "roll-name">
+            Original Cinnamon Roll
+          </div>
+  
+        </div>  
+    </div>
+    <!-- END HEADER-->
+
+
+    <!-- PRODUCT DETAILS -->
+    <div class="details">
+
+        <img class="detail-image" src="assets/products/original-cinnamon-roll.jpg" alt="A cinnamon roll glazed with icing on a plate with cinnamon sticks"/>
+
+
+        <!-- RIGHT SIDE OF PRODUCT DETIALS -->
+        <div class="details-right">
+        
+          <!-- TODO: update to use url info -->
+            <div class="detail-description">
+                Customize our delicious, hand-made cinnamon roll to your liking!
+            </div>
+
+          <!-- Glazing Drop Down -->
+            <div class="customize">
+                Glazing:
+                <div class="dropdown">
+                    <select id="glazing" onchange="glazingChange(this)"></select>
+                </div>
+            </div>
+
+            <!-- Pack Size Drop Down -->
+            <div class="customize">
+                Pack size:
+                <div class="dropdown">
+                    <select id="pack" onchange="packChange(this)"></select>
+                </div>
+            </div>
+
+            <!-- Final Price and Checkout Button -->
+            <div class="add-to-cart">
+                <span id="price">$ 2.49</span>
+                <span class="add-button" onclick="addToCart()">
+                    Checkout
+                </span>
+            </div>
+
+        </div>
+        <!-- END DETAILS RIGHT -->
+
+    </div>
+    <!-- END PRODUCT DETAILS -->
+
+  </body>
+
+  <script src="js/rollsData.js"></script>
+  <script src="js/script.js"></script>
