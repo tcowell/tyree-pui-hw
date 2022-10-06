@@ -57,7 +57,7 @@ function calculateItemCost(roll) {
     let calcPrice = (roll.basePrice + glazingPrice) * packPrice;
     calcPrice = calcPrice.toFixed(2);
 
-    return Number(calcPrice);
+    return calcPrice;
 }
 
 //createCartItem()
@@ -107,17 +107,22 @@ function createCartItem(roll) {
     itemPackSizeElement.innerText = itemPackSize;
     itemPriceElement.innerText = itemPrice;
 
+    return Number(calcPrice);
 }
 
 
 // TODO: loop through cart[]
-//      check that cart is not empty
 //      call createCartItem()
 //      update total price
 
+let totalPrice = 0;
+const totalPriceElement = document.querySelector('#total-price');
+
 for (const roll of cart) {
-    console.log(roll);
-    createCartItem(roll);
+    const cost = createCartItem(roll);
+
+    totalPrice = totalPrice + cost;
+    totalPriceElement.innerText = "$ " + totalPrice.toFixed(2);
 }
 
 
