@@ -5,12 +5,12 @@ const cart = [];
 
 // define Roll class
 class Roll {
-    element = null;
     constructor(rollType, rollGlazing, packSize, basePrice) {
         this.type = rollType;
         this.glazing =  rollGlazing;
         this.size = packSize;
         this.basePrice = basePrice;
+        this.element = null;
     }
 }
 
@@ -75,11 +75,17 @@ function createCartItem(roll) {
     // access the template in the DOM and clone it
     const template = document.querySelector('#cart-item-template');
     const clone = template.content.cloneNode(true);
-    const rollElement = clone.querySelector(".cart-item");
+    roll.element = clone.querySelector(".cart-item");
+
+    // attach removeItem() function to 'remove' element
+    const btnRemove = roll.element.querySelector('.remove');
+    btnRemove.addEventListener('click', () => {
+        removeItem(roll);
+    });
 
     // append clone to list of cart items in the DOM
     const cartListElement = document.querySelector('#cart-item-list');
-    cartListElement.append(rollElement);
+    cartListElement.append(roll.element);
 
     //create all required variables
     const currentRoll = rolls[roll.type];
@@ -93,12 +99,12 @@ function createCartItem(roll) {
     const itemPrice = "$ " + calcPrice;
 
     // collect all DOM elements
-    const rollImageElement = rollElement.querySelector('.cart-image');
+    const rollImageElement = roll.element.querySelector('.cart-image');
 
-    const itemNameElement = rollElement.querySelector('#roll-name');
-    const itemGlazingElement = rollElement.querySelector('#glazing');
-    const itemPackSizeElement = rollElement.querySelector('#pack');
-    const itemPriceElement = rollElement.querySelector('#roll-price');
+    const itemNameElement = roll.element.querySelector('#roll-name');
+    const itemGlazingElement = roll.element.querySelector('#glazing');
+    const itemPackSizeElement = roll.element.querySelector('#pack');
+    const itemPriceElement = roll.element.querySelector('#roll-price');
 
     // update clone with info for current roll
     rollImageElement.src = rollImage;
@@ -107,11 +113,12 @@ function createCartItem(roll) {
     itemPackSizeElement.innerText = itemPackSize;
     itemPriceElement.innerText = itemPrice;
 
+
     return Number(calcPrice);
 }
 
 
-// TODO: loop through cart[]
+// loop through cart[]
 //      call createCartItem()
 //      update total price
 
@@ -130,3 +137,20 @@ for (const roll of cart) {
 //      remove item from array
 //      remove DOM element from cart page
 //      update toal price
+
+function removeItem(roll) {
+    roll.element.remove();
+
+    const index = cart.indexOf(roll);
+    if (index > -1) {
+        cart.splice(index, 1);
+    }
+
+    if (cart.length === 0) {
+        totalPriceElement.innerText = "$ 0.00";
+    } else {
+        const itemPrice = calculateItemCost(roll);
+        totalPrice = totalPrice - itemPrice;
+        totalPriceElement.innerText = "$ " + totalPrice.toFixed(2);
+    }
+}
