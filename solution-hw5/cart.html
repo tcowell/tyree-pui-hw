@@ -3,7 +3,6 @@
   <meta charset="UTF-8">
   <title>Shopping Cart</title>
   <link rel="stylesheet" type="text/css" href="styles/style.css">
-  <script src="js/script.js"></script>
   
   <body>
 
@@ -30,58 +29,45 @@
           <p>Shopping Cart</p>
         </div>
 
-        <!--Start first cart item-->
-        <div class="cart-item">
-          
-          <div class="cart-item-left">
-            <img class="cart-image" src="assets/products/original-cinnamon-roll.jpg" alt="A cinnamon roll glazed with icing on a plate with cinnamon sticks"/>
-            <div class="remove">
-              Remove
-            </div>
-          </div>
-  
-          <div class="cart-description">
-            Original Cinnamon Roll
-            <br/>
-            Glazing: Keep Original
-            <br/>
-            Pack Size: 1
-          </div>
-  
-          <div class="price">
-            $ 2.49
-          </div>
+        <!--START CART ITEM LIST-->
+        <div id="cart-item-list">
 
-        </div>
-  
-        <!--Start second cart item-->
-        <div class="cart-item">
+          <!--TEMPLATE CART ITEM-->
+          <template id="cart-item-template">
+            <div class="cart-item">
           
-          <div class="cart-item-left">
-            <img class="cart-image" src="assets/products/double-chocolate-cinnamon-roll.jpg" alt="A cinnamon roll glazed with chocolate and topped with crushed nuts on a piece of brown wrapping paper"/>
-            <div class="remove">
-             Remove
+              <div class="cart-item-left">
+                <img class="cart-image" src="assets/products/original-cinnamon-roll.jpg" alt="A cinnamon roll glazed with icing on a plate with cinnamon sticks"/>
+                <div class="remove">
+                  Remove
+                </div>
+              </div>
+  
+              <div class="cart-description">
+                <div id="roll-name">
+                  Original Cinnamon Roll
+                </div>
+                <div id="glazing">
+                  Glazing: Keep Original
+                </div>
+                <div id="pack">
+                  Pack Size: 1
+                </div>
+              </div>
+  
+              <div id="roll-price" class="price">
+                $ 2.49
+              </div>
+
             </div>
-          </div>
-  
-          <div class="cart-description">
-            Double-Chocolate Cinnamon Roll
-            <br/>
-            Glazing: Sugar Milk
-            <br/>
-            Pack Size: 6
-          </div>
-  
-          <div class="price">
-            $ 27.45
-          </div>
-        </div>
+          </template> <!--END TEMPLATE CART ITEM-->
+        </div> <!--END CART ITEM LIST-->
   
         <div class="total">
           <div class="cart-description">
             Total:
           </div>
-          <div class="price">
+          <div id="total-price" class="price">
             $ 29.94
           </div>
         </div>
@@ -100,3 +86,6 @@
 
   </body>
 </html>
+
+<script src="js/rollsData.js"></script>
+<script src="js/cart.js"></script>

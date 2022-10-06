@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Use loop to set drop down options for pack size
 
-const packSelect = [1, 3, 5, 10]
+const packSelect = [1, 3, 5, 12]
 
 document.addEventListener('DOMContentLoaded', function() {
     let packOptions = document.querySelector('#pack');
@@ -114,7 +114,11 @@ function glazingChange(element) {
 function packChange(element) {
     
     //collect the pack price from the drop down menu
-    const priceChange = Number(element.value);
+    let priceChange = Number(element.value);
+
+    if (priceChange === 12) {
+        priceChange = 10;
+    }
 
     //update orderSummary packPrice to be the pack size from the drop down
     orderSummary.packPrice = priceChange;
@@ -171,40 +175,3 @@ function addToCart() {
     console.log(cart);
 }
 
-
-// HOMEWORK 5 CODE >>>>>
-
-let a = new Roll("Original", "Sugar Milk", 1, 2.49);
-cart.push(a);
-
-let b = new Roll("Walnut", "Vanilla Milk", 12, 3.49);
-cart.push(b);
-
-let c = new Roll("Raisin", "Sugar Milk", 3, 2.99);
-cart.push(c);
-
-let d = new Roll("Apple", "Original", 3, 3.49);
-cart.push(d);
-
-//TODO: createCartItem()
-// takes in a Roll as an argument
-// create a new DOM element on cart page with
-//      correct image
-//      name of the item
-//      glazing for the item
-//      pack size
-//      calculated price
-//      remove button
-
-
-// TODO: loop through cart[]
-//      check that cart is not empty
-//      call createCartItem()
-//      display items on the cart page
-//      update total price
-
-
-// TODO: onClick event for 'Remove'
-//      remove item from array
-//      remove DOM element from cart page
-//      update toal price
