@@ -15,6 +15,7 @@ class Roll {
 }
 
 // a function to get the price of a glazing option
+// there's probably a better way to do this than hard-coding, but I didn't see any guidance for it in the HW
 function getGlazingPrice(glazing) {
     if (glazing == "Original" || glazing == "Sugar Milk") {
         return 0;
@@ -27,7 +28,8 @@ function getGlazingPrice(glazing) {
     }
 }
 
-
+// create 4 new rolls and add them to the cart array
+// hope it's okay to hard code the base prices here, theoretically i could have gotten them from rollsData.js
 let a = new Roll("Original", "Sugar Milk", 1, 2.49);
 cart.push(a);
 
@@ -39,6 +41,7 @@ cart.push(c);
 
 let d = new Roll("Apple", "Original", 3, 3.49);
 cart.push(d);
+
 
 // function to calculate price of an item
 function calculateItemCost(roll) {
@@ -62,13 +65,8 @@ function calculateItemCost(roll) {
 
 //createCartItem()
 // takes in a Roll as an argument
-// create a new DOM element on cart page with
-//      correct image
-//      name of the item
-//      glazing for the item
-//      pack size
-//      calculated price
-//      remove button
+// create a new DOM element on cart page with correct info for the given roll
+// returns the price of the given roll (so I don't have to call calculateItemCost() in the loop)
 
 function createCartItem(roll) {
     
@@ -100,7 +98,6 @@ function createCartItem(roll) {
 
     // collect all DOM elements
     const rollImageElement = roll.element.querySelector('.cart-image');
-
     const itemNameElement = roll.element.querySelector('#roll-name');
     const itemGlazingElement = roll.element.querySelector('#glazing');
     const itemPackSizeElement = roll.element.querySelector('#pack');
@@ -133,22 +130,24 @@ for (const roll of cart) {
 }
 
 
-// TODO: onClick event for 'Remove'
-//      remove item from array
+// onClick function for 'Remove'
 //      remove DOM element from cart page
+//      remove item from cart array
 //      update toal price
 
 function removeItem(roll) {
     roll.element.remove();
 
     const index = cart.indexOf(roll);
+    // handling for when the cart is empty (not sure this is necessary here)
     if (index > -1) {
         cart.splice(index, 1);
     }
 
+    // set the price in the DOM to be 0 when the cart is empty
     if (cart.length === 0) {
         totalPriceElement.innerText = "$ 0.00";
-    } else {
+    } else { // otherwise update the price by subtracting the cost of the given roll
         const itemPrice = calculateItemCost(roll);
         totalPrice = totalPrice - itemPrice;
         totalPriceElement.innerText = "$ " + totalPrice.toFixed(2);
