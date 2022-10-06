@@ -185,3 +185,26 @@ cart.push(c);
 
 let d = new Roll("Apple", "Original", 3, 3.49);
 cart.push(d);
+
+//TODO: createCartItem()
+// takes in a Roll as an argument
+// create a new DOM element on cart page with
+//      correct image
+//      name of the item
+//      glazing for the item
+//      pack size
+//      calculated price
+//      remove button
+
+
+// TODO: loop through cart[]
+//      check that cart is not empty
+//      call createCartItem()
+//      display items on the cart page
+//      update total price
+
+
+// TODO: onClick event for 'Remove'
+//      remove item from array
+//      remove DOM element from cart page
+//      update toal price
