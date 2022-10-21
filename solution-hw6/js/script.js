@@ -156,6 +156,24 @@ class Roll {
     }
 }
 
+
+// function to access cart from local storage
+// i know duplicate code is bad (this function is also in cart.js)
+//        but trying to share it between the files caused more problems than it solved
+function getCart() {
+    
+    // default cart is an empty array
+    let cart = [];
+    
+    // if there is a stored cart, get it from storage, parse it, and assign it to 'cart'
+    if (localStorage.getItem('storedCart') != null) {
+        const cartString = localStorage.getItem('storedCart');
+        cart = JSON.parse(cartString);
+    }
+
+    return cart;
+}
+
 // onclick function for 'Checkout' button
 function addToCart() {
 
@@ -167,12 +185,11 @@ function addToCart() {
     //create a new Roll object with the correct values
     const roll = new Roll(rollType, rollGlazing, packSize, basePrice);
 
+    // gets an existing cart (if there is one)
     let cart = getCart();
-    console.log(typeof(cart));
 
     //add new roll to cart array
     cart.push(roll);
-    console.log(cart);
 
     //convert cart to a string and save to local storage
     const cartString = JSON.stringify(cart);
@@ -180,18 +197,5 @@ function addToCart() {
 
     //print the current contents of the cart
     console.log(cartString);
-}
-
-function getCart() {
-    
-    let cart = [];
-    
-    if (localStorage.getItem('storedCart') != null) {
-        const cartString = localStorage.getItem('storedCart');
-        cart = JSON.parse(cartString);
-    }
-
-    console.log(typeof(cart));
-    return cart;
 }
 

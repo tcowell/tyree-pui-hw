@@ -129,14 +129,12 @@ function createCartItem(roll) {
 
 function removeItem(roll) {
     roll.element.remove();
-    //delete roll.element;
 
     // get cart from local storage
     let cart = getCart();
 
     // find the given roll in cart
-    const index = cart.findIndex(roll);
-    console.log(index);
+    const index = findRoll(roll, cart);
 
     // handling for when the cart is empty (not sure this is necessary here)
     if (index > -1) {
@@ -159,4 +157,21 @@ function removeItem(roll) {
 
     //print the current contents of the cart
     console.log(cartString);
+}
+
+
+// function to find the first instance of a given roll in the cart
+// had to hard code because neither indexOf() nor findIndex() would work
+// has an issue with duplicate rolls:
+//      if you remove the second duplicate from the DOM, it removes the first duplicate from the cart
+function findRoll(roll, cart) {
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].type == roll.type && 
+            cart[i].glazing == roll.glazing &&
+            cart[i].size == roll.size &&
+            cart[i].basePrice == roll.basePrice) {
+                return i;
+            }
+    }
+    return -1;
 }
