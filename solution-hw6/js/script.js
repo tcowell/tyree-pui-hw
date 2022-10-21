@@ -146,9 +146,6 @@ function updatePrice(order) {
 
 // HOMEWORK 4 CODE (PART 2) >>>
 
-// create empty array
-const cart = [];
-
 // define Roll class
 class Roll {
     constructor(rollType, rollGlazing, packSize, basePrice) {
@@ -170,8 +167,31 @@ function addToCart() {
     //create a new Roll object with the correct values
     const roll = new Roll(rollType, rollGlazing, packSize, basePrice);
 
+    let cart = getCart();
+    console.log(typeof(cart));
+
     //add new roll to cart array
     cart.push(roll);
     console.log(cart);
+
+    //convert cart to a string and save to local storage
+    const cartString = JSON.stringify(cart);
+    localStorage.setItem('storedCart', cartString);
+
+    //print the current contents of the cart
+    console.log(cartString);
+}
+
+function getCart() {
+    
+    let cart = [];
+    
+    if (localStorage.getItem('storedCart') != null) {
+        const cartString = localStorage.getItem('storedCart');
+        cart = JSON.parse(cartString);
+    }
+
+    console.log(typeof(cart));
+    return cart;
 }
 

@@ -1,23 +1,44 @@
-// HOMEWORK 5 CODE >>>>>
+// HOMEWORK 5 and 6 CODE >>>>>
 
-// create empty array
-const cart = [];
+// function to access cart from local storage
+// i know duplicate code is bad (this function is also in script.js)
+//        but trying to share it between the files caused more problems than it solved
+function getCart() {
+    
+    // default cart is an empty array
+    let cart = [];
+    
+    // if there is a stored cart, get it from storage, parse it, and assign it to 'cart'
+    if (localStorage.getItem('storedCart') != null) {
+        const cartString = localStorage.getItem('storedCart');
+        cart = JSON.parse(cartString);
+    }
 
-// define Roll class
-class Roll {
-    constructor(rollType, rollGlazing, packSize, basePrice) {
-        this.type = rollType;
-        this.glazing =  rollGlazing;
-        this.size = packSize;
-        this.basePrice = basePrice;
-        this.element = null;
+    return cart;
+}
+
+// default total price is 0
+let totalPrice = 0;
+// get the total price DOM element
+const totalPriceElement = document.querySelector('#total-price');
+
+// if there is a stored cart in local storage, retrieve it and assign its value to 'cart'
+if (localStorage.getItem('storedCart') != null) {
+    let cart = getCart();
+
+    // loop through cart, call createCartItem for each roll
+    // update the total price in the DOM after each roll is created
+    for (const roll of cart) {
+        const cost = createCartItem(roll);
+
+        totalPrice = totalPrice + cost;
+        totalPriceElement.innerText = "$ " + totalPrice.toFixed(2);
     }
 }
 
 // a function to get the price of a glazing option
-// there's probably a better way to do this than hard-coding, but I didn't see any guidance for it in the HW
 function getGlazingPrice(glazing) {
-    if (glazing == "Original" || glazing == "Sugar Milk") {
+    if (glazing == "Keep Original" || glazing == "Sugar Milk") {
         return 0;
     } else if (glazing == "Vanilla Milk") {
         return 0.5;
@@ -27,20 +48,6 @@ function getGlazingPrice(glazing) {
         console.log("The glazing does not exist");
     }
 }
-
-// create 4 new rolls and add them to the cart array
-// hope it's okay to hard code the base prices here, theoretically i could have gotten them from rollsData.js
-let a = new Roll("Original", "Sugar Milk", 1, 2.49);
-cart.push(a);
-
-let b = new Roll("Walnut", "Vanilla Milk", 12, 3.49);
-cart.push(b);
-
-let c = new Roll("Raisin", "Sugar Milk", 3, 2.99);
-cart.push(c);
-
-let d = new Roll("Apple", "Original", 3, 3.49);
-cart.push(d);
 
 
 // function to calculate price of an item
@@ -115,21 +122,6 @@ function createCartItem(roll) {
 }
 
 
-// loop through cart[]
-//      call createCartItem()
-//      update total price
-
-let totalPrice = 0;
-const totalPriceElement = document.querySelector('#total-price');
-
-for (const roll of cart) {
-    const cost = createCartItem(roll);
-
-    totalPrice = totalPrice + cost;
-    totalPriceElement.innerText = "$ " + totalPrice.toFixed(2);
-}
-
-
 // onClick function for 'Remove'
 //      remove DOM element from cart page
 //      remove item from cart array
@@ -137,10 +129,18 @@ for (const roll of cart) {
 
 function removeItem(roll) {
     roll.element.remove();
+    //delete roll.element;
 
-    const index = cart.indexOf(roll);
+    // get cart from local storage
+    let cart = getCart();
+
+    // find the given roll in cart
+    const index = cart.findIndex(roll);
+    console.log(index);
+
     // handling for when the cart is empty (not sure this is necessary here)
     if (index > -1) {
+        // remove roll from cart array
         cart.splice(index, 1);
     }
 
@@ -152,4 +152,11 @@ function removeItem(roll) {
         totalPrice = totalPrice - itemPrice;
         totalPriceElement.innerText = "$ " + totalPrice.toFixed(2);
     }
+
+    //convert cart to a string and save to local storage
+    const cartString = JSON.stringify(cart);
+    localStorage.setItem('storedCart', cartString);
+
+    //print the current contents of the cart
+    console.log(cartString);
 }
